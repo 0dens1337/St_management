@@ -1,9 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-violet-950 mb-3">
-    <a class="navbar-brand" href='/'>Student Management</a>
+    @auth()
+        <a href="{{ route('home') }}" class="navbar-brand navbar-nav mx-auto justify-content-center text-center">Student Management</a>
+    @endauth
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     @guest()
+    <a class="navbar-brand" href='/'>Student Management</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item active">

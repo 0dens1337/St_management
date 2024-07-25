@@ -6,7 +6,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="{{ route('home') }}" class="nav-link active" aria-current="page">
+            <a href="{{ route('groups.index') }}" class="nav-link active" aria-current="page">
                 View Groups
             </a>
         </li>

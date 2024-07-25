@@ -26,30 +26,16 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $genders = GenderEnum::list();
+
         return view('auth.register', compact('genders'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'string', Rule::enum(RoleEnum::class)],
-            'gender' => ['required', 'string', Rule::enum(GenderEnum::class)],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'gender' => $request->gender,
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $user = User::create($validatedData);
+        auth()->login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('role')->default(2);
-            $table->tinyInteger('gender')->nullable();
+        Schema::create('groups', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->timestamps();
         });
     }
 
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role', 'gender', 'group_id');
-        });
+        Schema::dropIfExists('groups');
     }
 };

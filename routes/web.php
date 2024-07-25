@@ -33,6 +33,7 @@ Route::get('/', function () {
     return view('main.home');
 })->name('home');
 
+Route::resource('groups', GroupController::class);
 
 
 require __DIR__.'/auth.php';
