@@ -13,12 +13,24 @@ class Group extends Model
 
     protected $fillable = [
         'title',
+        'user_id',
+        'level',
 
     ];
 
-    public function users(): HasMany
+    public function users(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function subjects(): HasMany
+    {
+        return $this->hasMany(Subject::class);
     }
 
 }

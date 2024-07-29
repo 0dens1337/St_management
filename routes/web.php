@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,8 @@ Route::get('/', function () {
     return view('main.home');
 })->name('home');
 
-Route::resource('groups', GroupController::class);
+Route::resource('groups', GroupController::class)->middleware('auth');
+Route::resource('subjects', SubjectController::class)->middleware('auth');
 
 
 require __DIR__.'/auth.php';

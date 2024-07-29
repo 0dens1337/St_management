@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\LevelEnum;
 use App\Http\Requests\StoreGroupRequest;
 use App\Models\Group;
+use App\Models\Subject;
 use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monolog\Level;
 
 class GroupController extends Controller
 {
@@ -15,9 +18,10 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Auth::user()->groups();
+        $groups = Group::with('creator')->get();
+        $subjects = Subject::all();
 
-        return view('groups.index', compact('groups'));
+        return view('groups.index', compact('groups', 'subjects'));
     }
 
     /**
@@ -25,7 +29,10 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('groups.create');
+        $levels = LevelEnum::list();
+        $subjects = Subject::pluck('title', 'description', 'id');
+
+        return view('groups.create', compact('levels', 'subjects'));
     }
 
     /**
@@ -43,7 +50,9 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $subjects = Subject::all();
+
+        return view('groups.show', compact('subjects'));
     }
 
     /**

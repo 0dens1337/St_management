@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('group_id')->nullable();
+        Schema::table('groups', function (Blueprint $table) {
+            $table->tinyInteger('level')->default(0);
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('group_id');
+        Schema::table('groups', function (Blueprint $table) {
+            $table->dropColumn('level');
         });
     }
 };

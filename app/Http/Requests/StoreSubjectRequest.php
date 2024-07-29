@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\LevelEnum;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreGroupRequest extends FormRequest
+class StoreSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +22,8 @@ class StoreGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'level' => Rule::enum(LevelEnum::class),
+            'title' => ['required', 'string' , 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
         ];
     }
 }

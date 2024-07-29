@@ -1,30 +1,31 @@
 @extends('layouts.app')
 @section('content')
+    <a class="btn btn-success" href="{{ route('groups.create') }}">Create Group</a>
+    <table class="table table-striped mt-2">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Teacher</th>
+            <th scope="col">Level</th>
+            <th scope="col">Actions</th>
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>bla</th>
-                    <th>bla</th>
-                    <th>bla</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($groups as $group)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $group->title }}</td>
-                        <td>bla</td>
-                        <td>bla</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-
+        </tr>
+        </thead>
+        <tbody>
+        @if($groups)
+            @foreach($groups as $group)
+        <tr>
+            <th scope="row">{{ $loop->iteration }}</th>
+            <td>{{ $group->title }}</td>
+            <td>{{ $group->creator ? $group->creator->name : 'Unknown' }}</td>
+            <td>{{ $group->level }}</td>
+            <td><a href="{{ route('groups.show', $group->id) }}" class="btn btn-outline-primary btn-sm">View</a></td>
+        </tr>
+            @endforeach
+        @else
+            <p>No Groups Found</p>
+        @endif
+        </tbody>
+    </table>
 @endsection

@@ -27,7 +27,6 @@ class User extends Authenticatable
         'password',
         'role',
         'gender',
-        'group_id',
     ];
 
     /**
@@ -49,9 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function groups(): BelongsTo
+    public function groups(): HasMany
     {
-        return $this->belongsTo(Group::class);
+        return $this->hasMany(Group::class);
     }
 
 }
