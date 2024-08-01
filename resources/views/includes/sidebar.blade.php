@@ -11,13 +11,13 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('dashboard') }}" class="nav-link text-white">
-                Dashboard
+            <a href="{{ route('subjects.index') }}" class="nav-link text-white">
+                Subjects
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link text-white">
-                Groups
+            <a href="{{ route('dashboard') }}" class="nav-link text-white">
+                Dashboard
             </a>
         </li>
         <li>

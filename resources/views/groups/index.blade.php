@@ -20,7 +20,11 @@
             <td>{{ $group->title }}</td>
             <td>{{ $group->creator ? $group->creator->name : 'Unknown' }}</td>
             <td>{{ $group->level }}</td>
-            <td><a href="{{ route('groups.show', $group->id) }}" class="btn btn-outline-primary btn-sm">View</a></td>
+            <td>
+                <a href="{{ route('groups.show', $group->id) }}" class="btn btn-outline-primary btn-sm">View</a>
+                <a href="{{ route('groups.edit', $group->id) }}" class="btn btn-outline-info btn-sm">Edit</a>
+            </td>
+
         </tr>
             @endforeach
         @else

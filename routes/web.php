@@ -36,6 +36,7 @@ Route::get('/', function () {
 
 Route::resource('groups', GroupController::class)->middleware('auth');
 Route::resource('subjects', SubjectController::class)->middleware('auth');
+Route::post('/subjects/{subjectId}/grade', [SubjectController::class, 'saveGrade'])->name('subjects.saveGrade');
 
 
 require __DIR__.'/auth.php';

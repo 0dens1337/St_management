@@ -50,25 +50,30 @@ class GroupController extends Controller
      */
     public function show(string $id)
     {
-        $subjects = Subject::all();
+        $groups = Group::with('subjects')->findOrFail($id);
 
-        return view('groups.show', compact('subjects'));
+        return view('groups.show', compact('groups'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Group $id)
     {
-        //
+        $subjects = Subject::pluck('title', 'description', 'id');
+        $groups = Group::find($id);
+
+        return view('groups.edit', compact('groups', 'subjects'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreGroupRequest $request, Group $groups)
     {
-        //
+        $groups->update($request->validated());
+
+        return redirect()->route('groups.index');
     }
 
     /**
