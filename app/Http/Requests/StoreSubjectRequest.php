@@ -24,7 +24,7 @@ class StoreSubjectRequest extends FormRequest
         return [
             'title' => ['required', 'string' , 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'group_id' => ['']
+            'group_id' => [''],
         ];
     }
 }

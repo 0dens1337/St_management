@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Models\Group;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +13,10 @@ class SubjectController extends Controller
 {
     public function index()
     {
-        $subjects = Subject::all();
+        $subjects = Subject::with('users')->get();
         $groups = Group::all();
 
-        return view('subjects.index', compact('subjects', 'groups'));
+        return view('subjects.index', compact('subjects','groups'));
     }
 
     public function create()
@@ -35,18 +36,20 @@ class SubjectController extends Controller
     public function show($subjectsId)
     {
         $subjects = Subject::findOrFail($subjectsId);
+        $group = Group::with('creator')->get();
 
-        return view('subjects.show', compact('subjects'));
+        return view('subjects.show', compact('subjects', 'group'));
     }
 
     public function saveGrade(Request $request, $subjectId)
     {
         $request->validate([
-            'grade' => 'required|integer|between:2,5'
+            'grade' => 'required|integer|between:2,5',
+            'is_completed' => 'boolean',
         ]);
         $user = Auth::user();
         $user->subjects()->syncWithoutDetaching([$subjectId => ['grade' => $request->input('grade')]]);
 
-        return redirect()->back();
+        return redirect()->route('subjects.index');
     }
 }
