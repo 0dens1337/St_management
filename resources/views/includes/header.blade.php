@@ -1,29 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-violet-950 mb-3">
-    @auth()
-        <a href="{{ route('home') }}" class="navbar-brand navbar-nav mx-auto justify-content-center text-center">Student Management</a>
-    @endauth
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    @guest()
-    <a class="navbar-brand" href='/'>Student Management</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/">About</a>
-            </li>
+@guest()
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Student Management</a>
+        <input class="form-control form-control-dark bg-dark text-white w-100" type="text" placeholder="Search"
+               aria-label="Search">
+        <ul class="navbar-nav px-3">
         </ul>
+
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-outline-info" href="{{ route('register') }}">Sign up</a>
+                <a class="btn btn-info" href="{{ route('register') }}">Sign up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">Sign in</a>
             </li>
         </ul>
-    </div>
-    @endguest
-</nav>
+
+        @endguest
+    </nav>

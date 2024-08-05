@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="text-white justify-content-center text-center">
-
-    </div>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="nav-link text-dark">
+            Logout
+        </button>
+    </form>
 @endsection

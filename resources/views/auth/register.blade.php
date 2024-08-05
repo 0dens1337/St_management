@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-5 mb-4">
                 <div class="card">
-                    <div class="card-header border-bottom border-violet-950 card-header-warning bg-dark text-white">{{ __('Register') }}</div>
+                    <div class="card-header border-bottom border-violet-950 card-header-warning bg-light text-dark">{{ __('Register') }}</div>
 
                     <div class="card-body bg-dark">
                         <form method="POST" action="{{ route('register') }}">
