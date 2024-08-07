@@ -14,9 +14,9 @@ class SubjectController extends Controller
     public function index()
     {
         $subjects = Subject::with('users')->get();
-        $groups = Group::all();
+//        $groups = $subjects->groups();
 
-        return view('subjects.index', compact('subjects','groups'));
+        return view('subjects.index', compact('subjects'));
     }
 
     public function create()

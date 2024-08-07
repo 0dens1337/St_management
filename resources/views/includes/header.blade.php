@@ -1,19 +1,13 @@
 @guest()
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Student Management</a>
-        <input class="form-control form-control-dark bg-dark text-white w-100" type="text" placeholder="Search"
-               aria-label="Search">
+    <nav class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0 text-dark" href="#">Student Management</a>
         <ul class="navbar-nav px-3">
+            <a class="btn btn-success" href="{{ route('register') }}">Sign up</a>
+            <a class="btn btn-info" href="{{ route('login') }}">Sign in</a>
         </ul>
 
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-info" href="{{ route('register') }}">Sign up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Sign in</a>
-            </li>
-        </ul>
 
-        @endguest
+
     </nav>
+@endguest
+

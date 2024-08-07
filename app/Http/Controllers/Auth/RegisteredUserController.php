@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\GenderEnum;
+use App\Enums\LevelEnum;
 use App\Enums\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterUserRequest;
@@ -26,8 +27,9 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $genders = GenderEnum::list();
+        $levels = LevelEnum::list();
 
-        return view('auth.register', compact('genders'));
+        return view('auth.register', compact('genders', 'levels'));
     }
 
     public function store(RegisterUserRequest $request): RedirectResponse

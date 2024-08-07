@@ -20,7 +20,7 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $subject->title }}</td>
                     <td>{{ $subject->description }}</td>
-                    <td>{{ $subject->group_id }}</td>
+                    <td></td>
                     <td>{{ $subject->is_completed ? 'Completed': 'In progress' }}</td>
                     <td></td>
                     <td><a href="{{ route('subjects.show', $subject->id) }}" class="btn btn-primary btn-sm">View</a></td>

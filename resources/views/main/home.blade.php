@@ -5,8 +5,8 @@
             <h1>Welcome to your best Student Management</h1>
             <p class="lead">Here you might find interested information!<br> Click the button below and start overview.</p>
             <p class="lead">
-                <a href="/" class="btn btn-lg btn-outline-info">View Group</a>
-                <a href="/" class="btn btn-lg btn-outline-secondary w-10">To the Dashboard</a>
+                <a href="{{ route('groups.index') }}" class="btn btn-lg btn-info">View Group</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-lg btn-secondary w-10">To the Dashboard</a>
             </p>
         </div>
     </main>

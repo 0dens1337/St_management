@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\GenderEnum;
+use App\Enums\LevelEnum;
 use App\Enums\RoleEnum;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -32,6 +33,7 @@ class RegisterUserRequest extends FormRequest
             'password_confirmation' => ['required', 'string', 'min:8'],
             'gender' => ['required', 'string', Rule::enum(GenderEnum::class)],
             'role' => [Rule::enum(RoleEnum::class)],
+            'level' => ['required', 'string',  Rule::enum(LevelEnum::class)],
         ];
     }
 }

@@ -34,4 +34,10 @@ class Group extends Model
         return $this->hasMany(Subject::class);
     }
 
+    public function getLevelNameAttribute(): string
+    {
+        return LevelEnum::list()[$this->level];
+    }
+
+
 }

@@ -14,6 +14,17 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+    public function show(Request $request)
+    {
+        $user = auth()->user();
+        $groups = $user->groups;
+        $groupsCount = $groups->count();
+
+        return view('profile.show', compact('user', 'groups', 'groupsCount'));
+    }
+
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
